@@ -1,0 +1,117 @@
+pre
+  padding: 1.5em
+  border: 1px solid darken($theme-color, 8)
+
+// Typography
+p, li, dd, dt
+  line-height: 1.6em
+
+hr
+  border: 1px solid #ddd
+  margin: 2em 0
+
+.subtle-text
+  font-style: italic
+  color: lighten($base_font_color, 30)
+
+.marked-text
+  padding: .3em .8em
+  background-color: darken($accent_color, 30)
+  color: contrast-color(darken($accent_color, 30), #000, #fff, 70%)
+  @include border-radius(.2em)
+
+.is-error
+  @extend .marked-text
+  background-color: lighten(red, 30)
+  color: contrast-color(lighten(red, 30), #000, #fff, 70%)
+
+.is-inline
+  li
+    display: inline
+    margin-right: 1em
+
+ul, ol
+
+  ul, ol
+    margin-bottom: 0
+
+  &.bare
+    padding-left: 0
+
+    li
+      list-style: none
+
+.page
+  color: $base_font_color
+
+h1
+  border-bottom: 1px dotted lighten($base_font_color, 45)
+
+h1, h2, h3, h4, h5, h6
+  color: $titles_font_color
+  font-weight: normal
+
+blockquote
+  padding-left: 1em
+  border-left: 8px solid $border_color
+
+a
+  text-decoration: none
+  color: $links_font_color
+  border-bottom: 1px solid transparent
+
+  &:hover
+    color: darken($links_font_color, 40)
+    border-bottom: 1px dashed lighten($links_font_color, 50)
+
+ul.checks
+  li
+    list-style: none
+    margin-bottom: .3em
+    padding-left: .2em
+
+    &:before
+      content: '\f00c'
+      font-family: FontAwesome
+      display: inline-block
+      margin-left: -1em
+      width: 1.2em
+
+ul.code
+  li
+    list-style: none
+    margin-bottom: .3em
+    padding-left: .2em
+
+    &:before
+      content: '\f121'
+      font-family: FontAwesome
+      display: inline-block
+      margin-left: -1em
+      width: 1.2em
+
+.content-example
+  float: right
+  padding: .8em
+  max-width: 100%
+  background-color: lighten($theme-color, 2)
+  border: 1px solid darken($theme-color, 8)
+  margin: 0 0 1em 0
+
+  img
+    max-width: 100%
+
+  @media #{$more-than-phone}
+    width: 50%
+    margin: 0 1em 1em 1em
+
+  @media #{$more-than-tablet}
+    width: 30%
+
+a.content-example
+  &:hover
+    border: 1px dashed lighten($links_font_color, 50)
+
+.footnote
+  @extend .subtle-text
+  font-size: .9em

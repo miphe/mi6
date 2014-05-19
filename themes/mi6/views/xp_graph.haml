@@ -1,0 +1,27 @@
+
+.xp-graph.box
+  %ul
+    - @xp_data.each_with_index do |subject, i|
+      %li{ "data-subject" => subject.to_json, :class => 'subject-' + subject[:id] }
+        - klass = i < 1 ? 'is-active' : ''
+        %a{ :href => '#', :class => klass }
+          = subject[:label]
+
+  .label-col
+    %span
+      Knowledge
+    %span
+      Experience
+    %span
+      Passion
+
+  .bars-col
+    %span{ :class => 'bar-knowledge' }
+    %span{ :class => 'bar-experience' }
+    %span{ :class => 'bar-passion' }
+
+  %hr
+
+  .subject-content
+    %p
+      some interesting text here about stuff!

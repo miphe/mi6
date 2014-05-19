@@ -1,0 +1,14 @@
+Link text: Categories
+Show meta: false
+
+- Nesta::Menu.for_path('/categories').each_with_index do |item, index|
+  - if ! item.is_a? (Array)
+    %h2
+      = item.link_text
+  - else
+    %ul.bare
+      - item.each do |its|
+        %li
+          %i{ :class => 'fa fa-tag' }
+          %a{ :href => its.abspath }
+            = its.link_text

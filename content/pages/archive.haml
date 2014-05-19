@@ -1,0 +1,32 @@
+Title: Article archive | Miphe | André Drougge
+Show meta: false
+Link text: Archive
+
+%h1
+  Article archive
+
+%p
+  Here's an index of all article content on the site, by category and by year.
+
+.column-grid.columns-2
+  .column-1
+
+    %h2
+      Articles by year
+
+    %ol{ :class => 'bare' }
+      - archive_by_year
+
+  .column-2
+
+    - Nesta::Menu.for_path('/categories').each_with_index do |item, index|
+      - if ! item.is_a? (Array)
+        %h2
+          = item.link_text
+      - else
+        %ul.bare
+          - item.each do |its|
+            %li
+              %i{ :class => 'fa fa-tag' }
+              %a{ :href => its.abspath }
+                = its.link_text

@@ -1,0 +1,101 @@
+Title: Tales of a front-end developer | Miphe | André Drougge
+Keywords: Front-End, developer, web-designer, andre drougge, portfolio
+Description: Web portfolio, André Drougge. Read the tales and adventures of mine.
+Link text: Home
+Template: front
+Show meta: false
+Flags: primary
+
+- bg_alts = ['bg-1', 'bg-2', 'bg-4']
+- bg_class = bg_alts.sample
+
+%section{ :class => "hero #{bg_class}" }
+  .hero-content.l-2
+    %h2
+      Oh great, you're here!
+
+    %p
+      Welcome, I'm André. Front-End Developer.
+      %br
+      If you stay a moment, I'd like to tell you about myself.
+
+%section.tri-usp
+  %ul
+    %li
+      %span
+        {
+      %span
+        }
+      .tri-usp-content
+        %h2
+          %i.fa.fa-globe
+          Experience
+        %p
+          Curious about my CV?
+          %br
+          Take a closer look at a detailed list of my web experience.
+
+        %p.cta
+          %a{ :href => '/experience', :class => 'marked-text' }
+            Let's see
+            %i.fa.fa-angle-double-right
+    %li
+      %span
+        {
+      %span
+        }
+      .tri-usp-content
+        %h2
+          %i.fa.fa-male
+          About me
+        %p
+          Look into what sort of things I'm passionate about, and what I do when I'm not spinning web.
+        %p.cta
+          %a{ :href => '/about-me', :class => 'marked-text' }
+            Interesting
+            %i.fa.fa-angle-double-right
+    %li
+      %span
+        {
+      %span
+        }
+      .tri-usp-content
+        %h2
+          %i.fa.fa-list-ul
+          Latest posts
+        %p
+          If you'd like to read some about what I'm tinkering with for the moment, check this out.
+        %p.cta
+          %a{ :href => '/articles', :class => 'marked-text' }
+            I'm intrigued
+            %i.fa.fa-angle-double-right
+
+%section.about-me
+  %h2
+    %a{ :href => '/about-me' }
+      A quick peek at what I like
+      %span.subtle-text
+        \:: Read more
+        %i.fa.fa-angle-double-right
+  = haml :xp_graph, :layout => false
+
+%section.column-grid.columns-2.is-hidden
+  .column-1
+    %section{ :class => 'latest-articles show-box box' }
+      %h2
+        Latest articles
+
+      %ul.bare
+        - find_articles_by_path('articles', 3).each do |article|
+          %li
+            %a{ :href => article.abspath }
+              = article.link_text
+
+  .column-2
+    = haml :testimonials, :layout => false
+
+%section.is-hidden
+  %h2
+    Selected work..
+
+  - showcase_in_grid(Nesta::Page.find_by_path('/categories/showcase').articles)

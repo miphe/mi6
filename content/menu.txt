@@ -1,0 +1,19 @@
+/
+articles
+archive
+categories
+  categories/backbone
+  categories/github
+  categories/javascript
+  categories/jquery
+  categories/nesta
+  categories/project
+  categories/ruby
+  categories/sinatra
+  categories/wordpress
+  categories/showcase
+  categories/css
+  categories/sass
+experience
+bookshelf
+about-me

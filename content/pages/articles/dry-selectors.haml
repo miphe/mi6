@@ -1,0 +1,100 @@
+Title: How to achieve DRY selectors with Sass | Miphe | André Drougge
+Link text: DRY selectors with Sass
+Description: A small tip on how to achieve non-repetitive selectors with a DRY approach with Sass
+Keywords: DRY, Sass, scss, css, selector
+Categories: categories/css, categories/sass
+Date: 3 February 2012
+Summary: Read about a simple way to achieve a bit more beautiful compiled CSS ẃithout repeating yourself.
+
+%h1
+  DRY selectors with Sass
+
+:markdown
+
+  The other day I was refactoring a Sass stylesheet for game icons, they were well over one hundred and even though the Sass code was readable enough, the compiled CSS just didn't cut it - declarations were repeated and structured in a way that just wouldn't happen if you'd write the CSS (without Sass) to begin with. I thought I'd share the core idea behind creating non-repetitive selectors with Sass, resulting in DRY CSS.
+
+%p.subtle-text
+  The following example can be solved easier by adding a more general class to the markup and assigning styles to that instead, the idea here is to share a Sass technique that may be useful for you in the future, not to solve the presented situation in best possible way
+
+:markdown
+
+  Let's consider the following list of games.
+
+  - Scrabble
+  - Tetris
+  - Hearts
+
+  Each of these games has one icon residing in a sprite background which means they all should have the same background image assigned to it. We could make that happen by writing the following Sass:
+
+  SCSS
+
+      :::scss
+      $games: scrabble, tetris, hearts;
+
+      @each $game in $games {
+          .game-\#{$game}: background-image: url(/bg/game-icons.jpg);
+      }
+
+  CSS
+
+      :::css
+      .game-scrabble { background-image: url(/bg/game-icons.jpg); }
+      .game-tetris { background-image: url(/bg/game-icons.jpg); }
+      .game-hearts { background-image: url(/bg/game-icons.jpg); }
+
+  The Sass would result in the very repetitive CSS where we create one selector and one CSS property per game as seen above, even though they could easily share the same declaration. When we have a list of 100 games, we're starting to see a problem.
+
+  In the following snippet we’re creating an array ($classes) where we store each game, separating them with a comma, and then outside of the loop, we’re writing one single rule where the $classes variable will work as the entire selector.
+
+  SCSS
+
+      :::scss
+      $games: scrabble, tetris, hearts;
+
+      $classes: ();
+      @each $game in $games {
+          $classes: join($classes, unquote(".game-\#{$game} "), comma);
+      }
+
+      \#{$classes} { background-image: url(/bg/game-icons.jpg); }
+
+  CSS
+
+      :::css
+      .game-scrabble,
+      .game-tetris,
+      .game-hearts { background-image: url(/bg/game-icons.jpg); }
+
+  A little more beautiful CSS. This may seem like a small improvement but when you loop through large quantities, this makes a big difference.
+
+  ## Indepth explanation
+
+  If you are new to Sass this may be a bit hard to grasp, let's go through it a bit more in detail.
+
+  At the first line we’re defining a new variable we call $games, and assigning it the value of a list. In any other language, we’d call it an Array. This list contains three items which in this case are all strings.
+
+  SCSS
+
+      :::scss
+      $games: scrabble, tetris, hearts;
+
+  We are doing the same thing later with the $classes variable, but instead of creating a list full of strings, we’re keeping it empty. We just need to create it so that we can use it later.
+
+      :::scss
+      $classes: ();
+
+  Our goal is to fill the new empty list with values from our $games list, separating each item with a comma, just the way you do when creating a list of selectors in CSS.
+
+  So for each item in the $games list, we’re putting that item into the $classes list, and separating it from the next with a comma. More accurately, we’re assing a new value to $classes for each item. The new value is itself ($classes) plus the new item that is relevant for the current iteration in the loop, plus a comma.
+
+      :::scss
+      @each $game in $games {
+          $classes: join($classes, unquote(".game-\#{$game} "), comma);
+      }
+
+  Now that we have a good set of comma separated classes, we can simply use the $classes variable as the selector for our rule, such as below.
+
+      :::scss
+      \#{$classes} { background-image: url(/bg/game-icons.jpg); }
+
+= haml :related_links, :layout => false, :locals => { :links => @related_links }

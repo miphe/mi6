@@ -1,0 +1,171 @@
+Title: About André Drougge | Miphe
+Description: Read about André Drougge in his own words
+Keywords: André Drougge, Portfolio
+Summary: First paragraph.\nSecond paragraph.
+Show meta: false
+Flags: primary
+
+%h1
+  About me
+
+= haml :public_profile, :layout => false, :locals => { :title => false, :bare => true, :inline => true }
+
+%p
+  I'm born in -84 which makes me
+
+  = age(Date.new(1984, 11, 15))
+
+  at the moment.
+
+:markdown
+  I am born and raised in Sweden (Stockholm) where I finished my studies in [Interactions Design](/experience) and started my web-journey.
+
+  For little over five years I worked with [Redbet](/showcase/redbet) where I developed a love for Ruby MVCs and have been a fan ever since. I transferred to Malta in 2010 to start up and lead the front-end team there.
+
+%p
+  In late 2013 I decided to leave Malta and work in a way I previously thought wasn't quite possible yet - professionally, productively yet
+
+  %i
+    remotely
+  \.
+
+  %a{ :href => 'http://x-team.com', :title => 'X-Team', :target => '_blank' }
+    X-Team
+
+  does an incredible job at this and enabling personal growth for developers, serving interesting projects, collegues and making it possible for talents all over the world to come together and build amazing applications.
+
+:markdown
+  ---
+
+= haml :xp_graph, :layout => false
+
+:markdown
+  ---
+
+  I've been into the web scene since I can remember and I really enjoy the constant evolution of the industry. I try to keep updated with the latest and greatest stuff and to always keep my learning curve steep.
+
+  When I'm not doing that, I enjoy Longboarding, Digital Painting, Archery and the occational try at the guitar.
+
+  ## Skills/Technologies
+
+  _I have most experience in development with these technologies._
+
+.column-grid.columns-2
+  .column-1
+
+    .flag-list
+      :markdown
+        ### <span>Markup</span> & template engines
+
+      %ul.code
+        %li
+          %a{ :href => 'http://www.kuwata-lab.com/erubis/', :target => '_blank' }
+            Erubis
+        %li
+          %a{ :href => 'http://haml.info/', :target => '_blank' }
+            Haml
+
+        %li
+          %a{ :href => 'http://twig.sensiolabs.org/', :target => '_blank' }
+            Twig
+
+      :markdown
+        ### <span>Javascript</span> libs and such
+
+      %ul.code
+        %li
+          %a{ :href => 'http://jquery.com/', :target => '_blank' }
+            jQuery
+        %li
+          %a{ :href => 'http://backbonejs.org/', :target => '_blank' }
+            Backbone.js
+        %li
+          %a{ :href => 'http://jasmine.github.io/', :target => '_blank' }
+            Jasmine
+
+      :markdown
+        ### <span>Styles</span> & preprocessors
+
+      %ul.code
+        %li
+          %a{ :href => 'http://sass-lang.com/', :target => '_blank' }
+            Sass
+        %li
+          %a{ :href => 'http://lesscss.org/', :target => '_blank' }
+            Less
+        %li
+          %a{ :href => 'http://compass-style.org/', :target => '_blank' }
+            Compass
+        %li
+          %a{ :href => 'http://susy.oddbird.net/', :target => '_blank' }
+            Susy
+
+  .column-2
+    .flag-list
+      :markdown
+        ### <span>Source control</span> mostly worked with..
+
+      %ul.code
+        %li
+          %a{ :href => 'http://git-scm.com/', :target => '_blank' }
+            Git
+        %li
+          %a{ :href => 'http://subversion.apache.org/', :target => '_blank' }
+            Subversion
+
+      :markdown
+        ### <span>CMS</span> mostly worked with..
+
+      %ul.code
+        %li
+          %a{ :href => 'http://wordpress.com/', :target => '_blank' }
+            WordPress (php)
+        %li
+          %a{ :href => 'http://refinerycms.com/', :target => '_blank' }
+            RefineryCMS (RoR)
+        %li
+          %a{ :href => 'http://drupal.org/', :target => '_blank' }
+            Drupal (php)
+        %li
+          %a{ :href => 'http://textpattern.com/', :target => '_blank' }
+            TextPattern (php)
+        %li
+          %a{ :href => 'http://spreecommerce.com/', :target => '_blank' }
+            Spree (e-commerce, RoR)
+        %li
+          %a{ :href => 'http://radiantcms.org/', :target => '_blank' }
+            Radiant (RoR)
+        %li
+          %a{ :href => 'http://nestacms.com/', :target => '_blank' }
+            Nesta (Sinatra)
+
+      :markdown
+        ### <span>Ruby</span> frameworks
+
+      %ul.code
+        %li
+          %a{ :href => 'http://ramaze.net/', :target => '_blank' }
+            Ramaze
+        %li
+          %a{ :href => 'http://www.padrinorb.com/', :target => '_blank' }
+            Padrino
+        %li
+          %a{ :href => 'http://rubyonrails.org/', :target => '_blank' }
+            Ruby on Rails
+
+:markdown
+  ## Software choices
+
+  _Design/Graphics/Prototyping_
+
+  - Adobe Photoshop
+  - Adobe Illustrator
+  - Adobe InDesign
+  - Axure
+  - OmniGraffle
+
+  _Code authoring_
+
+  - Sublime Text
+  - TextMate
+  - Nano

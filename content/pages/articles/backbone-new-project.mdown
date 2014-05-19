@@ -1,0 +1,12 @@
+Title: Backbone on Miphe | Miphe | André Drougge
+Description: A short article about an upcoming project of mine involving the javascript MV* framework Backbone.js
+Keywords: backbone, javascript, project
+Categories: categories/backbone, categories/javascript, categories/github, categories/project
+Date: 23 April 2014
+Summary: Backbone.js being one of my favorite MV* frameworks will be my approach to a new project I'm starting.
+
+# Adding a backbone to the portfolio
+
+Working with backbone.js is something that has re-ignited my passion for javascript projects greatly. The MV* approach to building rich client side applications really clicked for me, however I haven't had the opportunity to dive into a backbone project with my day-2-day tasks so I've decided to start it up off-hours.
+
+I'll be sharing the progress on github and an example of it in-action on a miphe subdomain.

@@ -1,0 +1,28 @@
+Title: New site deployed, built on Nesta CMS | Miphe | André Drougge
+Description: An article about why I chose to use NestaCMS on my portfolio.
+Keywords: nestaCMS, sinatra
+Categories: categories/nesta, categories/sinatra, categories/ruby, categories/project
+Date: 20 April 2014
+Flags: recommended
+Summary: It's long been on my wish-list to work on a [Nesta-CMS](http://nestacms.com/ "Nesta CMS official website") project but somehow there's always been something in the way. Well finally it's happening and I'm excited. Read about my choices and why Nesta may be a suitable as a CMS for developers.
+
+# Miphe 6 deployed, a Nesta app
+
+It's long been on my wish-list to work on a [Nesta-CMS](http://nestacms.com/ "Nesta CMS official website") project but somehow there's always been something in the way. Well finally it's happening and I'm excited.
+
+## So what is Nesta?
+
+> <i class="fa fa-quote-left"></i> Nesta is a lightweight Content Management System, written in Ruby using the Sinatra web framework.
+> Nesta has the simplicity of a static site generator, but (being a fully fledged Rack application) allows you to serve dynamic content on demand. <i class="fa fa-quote-right"></i>
+
+That's how [Graham Ashton](http://twitter.com/grahamashton "Graham Ashton, Nesta creator") describes his Sinatra CMS. For me Nesta is a CMS that allows me to work precisely the way I want to, content wise and development wise. I've never been a fan of WYSIWYGs. The first CMS I worked with was [TextPattern](http://textpattern.com/ "TextPattern") and that meant working with Textile to markup the content - beautiful, especially due to those times poor quality WYSIWYGs. What TextPattern enforced was to write your Textile in a textarea element on the online site, to me that felt [like using a t-shirt outside of a jacket](/quotes).
+
+Nesta lets you write Textile or Markdown in plain text files, Nesta will handle them as pages, articles, summaries etc. as long as you honor the structure of your documents and supply proper metadata. In the end I get to format my content the way I wished and I don't have to think about logging in to an admin area to update my content.
+
+I liked the idea of a CMS with strict structure requirements, that embraces writing content in your favorit text editor as opposed to an online interface.
+
+## Sounds great, but..
+
+I'm not going to claim that Nesta is [what makes a ball bounce](/quotes), if you need an easy and quick way of posting articles from any computer, probably there are better choices out there.
+
+Nesta is great, but it's for developers (or other web-folk) - not everyone. If you enjoy tinkering with Ruby, writing helpers and messing around with markdown/textile/haml, git and all that jazz - I recommend it.
