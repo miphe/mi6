@@ -4,6 +4,7 @@ Keywords: backbone, javascript, project
 Categories: categories/backbone, categories/javascript, categories/github, categories/project
 Date: 23 April 2014
 Summary: Backbone.js being one of my favorite MV* frameworks will be my approach to a new project I'm starting.
+Flags: draft
 
 # Adding a backbone to the portfolio
 
