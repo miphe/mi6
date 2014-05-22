@@ -1,10 +1,6 @@
 
 // TODO
 // - Add a Jasmine test suite
-// - Add goto-link functionality with anchor highlighting
-//   => User clicks on link that goes to #anchor
-//   => User is taken to that page and is scrolled smoothly to that anchor
-//   => The anchor element should highlight and fade off.
 
 (function($) {
 
@@ -43,30 +39,30 @@
     }
 
     this.clearOldGraphData = function() {
-      var $kn = this.module.find('.bar-knowledge');
-      var $xp = this.module.find('.bar-experience');
-      var $ps = this.module.find('.bar-passion');
+      var $bar_1 = this.module.find('.bar-1');
+      var $bar_2 = this.module.find('.bar-2');
+      var $bar_3 = this.module.find('.bar-3');
       var $cn = this.module.find('.subject-content');
 
       // Removing unecessary classes
-      $kn.attr('class', 'bar-knowledge');
-      $xp.attr('class', 'bar-experience');
-      $ps.attr('class', 'bar-passion');
+      $bar_1.attr('class', 'bar-1');
+      $bar_2.attr('class', 'bar-2');
+      $bar_3.attr('class', 'bar-3');
       $cn.empty();
     }
 
     this.applyNewGraphData = function(element) {
       data = this.gatherData(element);
-      var $kn = this.module.find('.bar-knowledge');
-      var $xp = this.module.find('.bar-experience');
-      var $ps = this.module.find('.bar-passion');
+      var $bar_1 = this.module.find('.bar-1');
+      var $bar_2 = this.module.find('.bar-2');
+      var $bar_3 = this.module.find('.bar-3');
       var $cn = this.module.find('.subject-content');
 
       var $preContent = $('<em>' + data.label + ' ::</em>')
 
-      $kn.addClass('filled-' + data.kn);
-      $xp.addClass('filled-' + data.xp);
-      $ps.addClass('filled-' + data.ps);
+      $bar_1.addClass('filled-' + data.bar_1);
+      $bar_2.addClass('filled-' + data.bar_2);
+      $bar_3.addClass('filled-' + data.bar_3);
       $cn.text(data.content).prepend($preContent);
       $cn.wrapInner('<p></p>');
     }
