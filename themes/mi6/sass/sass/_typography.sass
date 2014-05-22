@@ -15,10 +15,16 @@ hr
   color: lighten($base_font_color, 30)
 
 .marked-text
+  +border-radius(.2em)
   padding: .3em .8em
   background-color: darken($accent_color, 30)
   color: contrast-color(darken($accent_color, 30), #000, #fff, 70%)
-  @include border-radius(.2em)
+
+.key
+  +border-radius(.2em)
+  padding: .3em .5em
+  background-color: darken($theme-color, 30)
+  color: contrast-color(darken($theme-color, 30), #000, #fff, 70%)
 
 .is-error
   @extend .marked-text
