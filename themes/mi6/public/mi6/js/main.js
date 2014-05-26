@@ -91,10 +91,81 @@
     }
   }
 
+  FormHandler = function(selector) {
+    this.el = $(selector);
+
+    this.renderMessage = function(html) {
+      $('section.feedback-container').html(html);
+    }
+
+    this.ajaxSubmission = function(url, data, button) {
+      var that = this;
+      var button = button || this.el.find('.form-cta');
+      var text = button.text();
+      var icon = button.find('i');
+
+      var req = $.ajax({
+        type:     'POST',
+        url:      url,
+        data:     data,
+        dataType: 'html',
+        beforeSend: function() {
+
+          button.prop('disabled', true);
+
+          // Indicated on the submit button that work is in place
+          if(button.is('input')){
+            button.val('Sending e-mail..');
+          } else if (button.is('button')) {
+            button.text('Sending e-mail..');
+          }
+        }
+      });
+
+      req.done(function(response, status, xhr){
+        // Update the document with feedback
+        var content = $(response).find('section.feedback-container').html();
+        that.renderMessage(content);
+      });
+
+      req.fail(function() {
+        console.warn('Ajax failed!');
+        var $ajaxError = $('<p class="negative-text">The message could not be sent, this will hopefully be taken care of soon.</p>');
+        that.renderMessage($ajaxError);
+      });
+
+      req.always(function() {
+        // Restores the original state of the submit button
+        button.prop('disabled', false);
+
+        if(button.is('input')){
+          button.val(text);
+        } else if (button.is('button')) {
+          button.text(text).append(icon);
+        }
+      });
+    }
+
+    this.init = function() {
+
+      var that = this;
+
+      // Attach listeners
+      this.el.on('submit', function(e) {
+        e.preventDefault();
+        console.log($(this).attr('action'));
+        that.ajaxSubmission($(this).attr('action'), $(this).serialize());
+      });
+    }
+  }
+
   var magnImageHandler = new Magnific('image', '.viewable-image');
   magnImageHandler.init();
 
   var xpGraphModule = new ExperienceGraph('.xp-graph');
   xpGraphModule.init();
+
+  var contactForm = new FormHandler('.contact-form');
+  contactForm.init();
 
 })(jQuery);

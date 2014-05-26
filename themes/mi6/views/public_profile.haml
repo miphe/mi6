@@ -3,24 +3,15 @@
 - classes << 'bare' if defined?(bare) && bare
 - classes << 'is-inline' if defined?(inline) && inline
 
-- if defined?(title) && title
+- if defined? title && (social_info && social_info["profiles"])
   %h2
     Public profile, skills etc.
 
-%ul{ :class => classes.join(' ') }
-  %li
-    %i{ :class => 'fa fa-linkedin-square' }
-    %a{ :target => '_blank', :href => 'http://www.linkedin.com/pub/andr%C3%A9-drougge/22/88/637', :title => 'André Drougge on LinkedIn' }
-      LinkedIn
-  %li
-    %i{ :class => 'fa fa-stack-overflow' }
-    %a{ :target => '_blank', :href => 'http://careers.stackoverflow.com/miphe', :title => 'André Drougge on Stack Overflow Careers' }
-      StackOverflow
-  %li
-    %i{ :class => 'fa fa-github' }
-    %a{ :target => '_blank', :href => 'https://github.com/miphe', :title => 'André Drougge (miphe) on Github' }
-      Github
-  %li
-    %i{ :class => 'fa fa-twitter-square' }
-    %a{ :target => '_blank', :href => 'https://twitter.com/meiphe', :title => 'André Drougge on Twitter' }
-      Twitter
+  %ul{ :class => classes.join(' ') }
+    - social_info["profiles"].each do |item|
+      - info = item[1]
+      - label = item[0]
+      %li
+        %i{ :class => "fa #{info["icon"]}"}
+        %a{ :target => '_blank', :href => info["url"], :title => "#{social_info['name']} on #{label}", :rel => info["rel"] }
+          = label

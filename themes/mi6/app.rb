@@ -3,11 +3,8 @@
 
 module Nesta
   class App
-    # Uncomment the Rack::Static line below if your theme has assets
-    # (i.e images or JavaScript).
-    #
-    # Put your assets in themes/[themename]/public/[themename]/
-    #
+    # register Sinatra::FormKeeper
+
     use Rack::Static, :urls => ["/mi6"], :root => "themes/mi6/public"
 
     configure do
@@ -30,6 +27,18 @@ module Nesta
     end
 
     helpers do
+
+      def has_mailer?
+        Nesta::Config.fetch('mailer', nil) ? true : false
+      end
+
+      def social_info
+        Nesta::Config.fetch('owner', nil) ? Nesta::Config.fetch('owner') : {}
+      end
+
+      def youtubeVideo(id, effectuation = 'full')
+        'todo, write this helper'
+      end
 
       def on_section(href)
         if href.is_a?(Array)
@@ -90,23 +99,6 @@ module Nesta
         end
       end
 
-      # def author_biography(name = nil)
-      #   name ||= @page.metadata('author')
-      #   if name
-      #     short_name = name.downcase.gsub(/\W+/, '_').to_sym
-      #     avatar_path = File.join(['images', 'authors', "#{short_name}.jpg"])
-      #     html = ""
-      #     locals = { :has_avatar => false }
-      #     if File.exist?(File.join(Nesta::App.root, 'public', avatar_path))
-      #       html += capture_haml do
-      #         haml_tag :img, :src => "/#{avatar_path}", :class => 'avatar'
-      #       end
-      #       locals[:has_avatar] = true
-      #     end
-      #     html << haml(short_name.to_sym, :layout => false, :locals => locals)
-      #   end
-      # end
-
       def list_articles(articles)
         haml_tag :ol, :class => 'bare' do
           articles.each do |article|
@@ -149,7 +141,6 @@ module Nesta
 
         a
       end
-
     end # end helpers
 
     before do
@@ -163,7 +154,7 @@ module Nesta
           # '//cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js',             # Core
           # '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js',                    # Core
           # '//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.8.0/backbone.marionette.min.js', # Marionette
-          # '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.1/modernizr.min.js',                     # Core
+          '/mi6/js/modernizr.custom.js',                                                           #
           # '//cdnjs.cloudflare.com/ajax/libs/hammer.js/1.0.10/hammer.min.js'                        # Hammer, multitouch library
         ],
         :plugins => [
@@ -185,7 +176,6 @@ module Nesta
           { :id => 'jasmine',   :label => 'Jasmine',     :bar_1 => 30, :bar_2 => 30, :bar_3 => 80, :content  => 'Since I\'m rooted in the Ruby world, my preferred js testing framework is Jasmine, Jasmine should be quite easy to get into for anyone familiar with RSpec. Writing js test doesn\'t just ease your heart when adding to your codebase, but it helps you get into a pattern of writing better code - testable code. This is something I believe is important for the health of the project, and for personal growth of the developer.' },
           { :id => 'jquery',    :label => 'jQuery',      :bar_1 => 80, :bar_2 => 90, :bar_3 => 60, :content  => 'As for most Front-End developers, jQuery has been a part of my life for quite some time now, it\'s for me what the utility belt is for Batman. The super-power isn\'t about the belt, but it makes a lot of stuff much easier.' },
           { :id => 'sass',      :label => 'Sass',        :bar_1 => 100,:bar_2 => 90, :bar_3 => 70, :content  => 'For me Sass is more than an aid to strucure, re-use and calculate styles - it enables me to be more creative in the way I write my code. I get to adhere to a programmatical mindset as opposed to just writing declarations, which makes writing styles really enjoyable, especially with tools like Compass or Bourbon.' },
-          # { :id => 'compass',   :label => 'Compass',     :bar_1 => 90, :bar_2 => 90, :bar_3 => 70, :content  => '5' },
           { :id => 'less',      :label => 'Less',        :bar_1 => 60, :bar_2 => 10, :bar_3 => 50, :content  => 'I\'m using Less on a few of my current projects, even though I prefer Sass for CSS preprocessing I think Less\' approach is interesting and from a CSS-authoring point of view probably healthier than Sass.' },
           { :id => 'responsive',:label => 'Responsive',  :bar_1 => 80, :bar_2 => 80, :bar_3 => 80, :content  => 'These days, responsiveness for a web-site goes without saying, there is more to building responsive web applications than that though. If breakpoints doesn\'t give the right experience or feel intuitive enough - then there a lot of room for improvements. Truly responsive applications that feels right from phone to desktop, that just gives a really professional impression.' }
         ]
@@ -209,6 +199,43 @@ module Nesta
         { :text => 'join-instance_method', :href => 'http://sass-lang.com/documentation/Sass/Script/Functions.html#join-instance_method', :title => 'SASS_REFERENCE' },
         { :text => 'nth-instance_method', :href => 'http://sass-lang.com/documentation/Sass/Script/Functions.html#nth-instance_method', :title => 'SASS_REFERENCE' }
       ]
+    end
+
+    post '/contact' do
+
+      settings = Nesta::Config.fetch('mailer', nil) ? Nesta::Config.fetch('mailer') : nil
+
+      # Handle validation
+      # Handle XHR return
+
+      if settings
+        Pony.mail({
+          :subject     => settings["subject"],
+          :body        => request.params["message"],
+          :reply_to    => request.params["reply_to"],
+          :to          => settings["to"],
+          :via         => settings["via"].to_sym,
+          :via_options => {
+            :address              => settings["via_options"]["address"],
+            :port                 => settings["via_options"]["port"],
+            :enable_starttls_auto => settings["via_options"]["enable_starttls_auto"],
+            :user_name            => settings["via_options"]["user_name"],
+            :password             => settings["via_options"]["pw"],
+            :authentication       => settings["via_options"]["authentication"]
+          }
+        })
+      end
+
+      params = {}
+      request.params.each do |o,t|
+        params[o.to_sym] = t
+      end
+
+      params[:errors] = [
+        { :field => 'email', :msg => 'Something may be incorrect.' }
+      ]
+
+      haml :contact, :layout => !request.xhr?, :locals => params
     end
 
   end

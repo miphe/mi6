@@ -1,134 +1,92 @@
 // Sidebar (fixed)
-$sb-size            : 6em
 $sb-bg-color        : lighten($theme-color, 1)
 $sb-hover           : lighten($theme-color, 5)
-$sb-line-height     : $sb-size
-$sb-font-size       : $sb-size/3
 $sb-font-color      : darken($theme-color, 15)
 $sb-hover-font-color: darken($theme-color, 40)
 
 #sidebar
   position: fixed
   bottom: 0
-  height: $sb-size/2
+  height: 3em
   background-color: $sb-bg-color
   border-top: 1px solid darken($theme-color, 8)
-  font-size: $sb-font-size/2
-
-  .to-previous,
-  .to-next
-    display: none
-
-  .nodesys
-    font-size: 1.7em // Will affect nodesys grid and font size
-
-  // Profile
-  section.profile
-    // @include transition(all .25s ease-in-out)
-    position: relative
-    text-align: left
-    height: 100%
-
-    .pin, .node, .content-node
-      @include transition(opacity .25s ease-in-out)
-      opacity: .4
-
-    img
-      position: relative
-      z-index: 1
-      height: 100%
-
-  &:hover
-    .nodesys
-      .pin, .node, .content-node
-        opacity: 1
 
   @media #{$more-than-menu-width}
-    position: fixed
     top: 0
     right: 0
     height: 100%
     background-color: $sb-bg-color
     border-top: none
     border-left: 1px solid darken($theme-color, 8)
-    // box-shadow: 0 0 14px darken($theme-color, 10)
 
-    // Profile
-    section.profile
+  &:hover
+    .content-container
+      opacity: 1!important
+
+  // Profile
+  section.profile
+    position: relative
+    text-align: left
+    height: 100%
+
+    // Place above media queries due to importance
+    img
+      position: relative
+      z-index: 1
+      height: 100%
+      width: auto
+
+    .content-container
+      +transition(opacity .25s ease-in-out)
+      opacity: .4
+
+    @media #{$more-than-menu-width}
+      // Profile
+      // Image above links
       top: 35%
       height: auto
       text-align: center
-      @import nodesys
 
       img
+        +border-radius(50%)
         height: auto
         width: 50%
-        @include border-radius(50%)
         border: .2em solid #fff
 
-    // Next//Previous links
-    .to-previous,
-    .to-next
-      position: absolute
-      display: block
-      width: 100%
-      font-size: 75%
-      height: $sb-size*0.8
+      .content-container ul
+        font-size: 2em
 
-      @media all and (min-height : 690px)
-        height: $sb-size
-        font-size: 100%
+      li
+        margin-right: .5em
 
-    .to-previous a,
-    .to-next a
-      display: block
-      position: relative
-      width: 100%
-      background-color: $sb-bg-color
-      white-space: nowrap
-      overflow: hidden
-      text-overflow: ellipsis
-      color: $sb-font-color
-      text-align: center
-      line-height: $sb-line-height*0.8
-      height: $sb-size*0.8
+      h2
+        font-size: .8em
+        margin-bottom: .1em
 
-      @media all and (min-height : 690px)
-        height: $sb-size
-        line-height: $sb-line-height
+    @media #{$more-than-desktop}
+      // Profile
+      // Image to left, links to right,
+      // +container
+      text-align: left
 
-      @include transition(background-color .4s ease-in-out, color .4s ease-in-out, text-shadow .4s ease-in-out)
+      h2
+        margin-top: 25%
 
-      &:hover
-        color: $sb-hover-font-color
-        border-bottom: none
-        background-color: $sb-hover
-        text-decoration: none
+      img
+        width: 100%
 
-      &:before
-        left: 50%
-        margin-left: -.5em
-        font-family: FontAwesome
-        position: absolute
-        width: 1em
-        height: 1em
+      .image-container
+        +span-columns(5, 12)
 
-    .to-previous
-      top: 0
+      .content-container
+        +span-columns(7 omega, 12)
 
-      a:before
-        margin-top: -1.2em
-        content: '\f077'
+      .image-container-inner
+        padding-left: 2em
 
-    .to-next
-      bottom: 0
+      .content-container-inner
+        padding: 0 1em
 
-      a:before
-        margin-top: 1.2em
-        content: '\f078'
-
-  @media #{$more-than-tablet}
-    font-size: $sb-font-size
-
-    .nodesys
-      font-size: 1em
+    @media all and (max-height: 760px)
+      // If too short, render profile just beneath header
+      top: 60px

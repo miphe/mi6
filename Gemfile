@@ -7,6 +7,7 @@ gem 'susy', '1.0.9'
 # gem 'nesta-plugin-related-by-category'
 
 # gem (RUBY_VERSION =~ /^1.9/) ? 'ruby-debug19': 'ruby-debug'
-
+# gem 'sinatra-formkeeper'
 gem 'ultraviolet', :require => 'uv'
 gem 'rack-codehighlighter', :require => 'rack/codehighlighter'
+gem 'pony', :git => "https://github.com/benprew/pony.git"

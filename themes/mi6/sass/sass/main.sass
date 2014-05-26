@@ -19,12 +19,13 @@
 @import tri-usp
 @import flag-lists
 @import xp-graph
+@import form
 
 // TODO: Throw all this CSS into proper partials. This file should be clean.
 
 .page
-  // @include susy-grid-background
-  @include container
+  // +susy-grid-background
+  +container
 
 body, html
   font-family: 'Arvo', arial, sans-serif
@@ -36,40 +37,40 @@ body, html
 // Content grid
 #content
   // margin-top: $header-height
-  @include span-columns(12 omega, 12)
+  +span-columns(12 omega, 12)
 
   @media #{$more-than-menu-width}
-    @include span-columns(9, 12)
+    +span-columns(9, 12)
 
   @media #{$more-than-tablet}
-    @include span-columns(8, 12)
+    +span-columns(8, 12)
 
 // Sidebar grid
 #sidebar
-  @include span-columns(12 omega, 12)
+  +span-columns(12 omega, 12)
 
   @media #{$more-than-menu-width}
-    @include span-columns(3 omega, 12)
+    +span-columns(3 omega, 12)
 
   @media #{$more-than-tablet}
-    @include span-columns(4 omega, 12)
+    +span-columns(4 omega, 12)
 
 // Two column generic
 $gutter-width : 1em
 
 .column-grid
   &.columns-2
-    @include container
+    +container
 
     > .column-1, > .column-2
-      @include span-columns(12 omega, 12)
+      +span-columns(12 omega, 12)
 
     @media #{$more-than-tablet}
       > .column-1
-        @include span-columns(6, 12)
+        +span-columns(6, 12)
 
       > .column-2
-        @include span-columns(6 omega, 12)
+        +span-columns(6 omega, 12)
 
 #content-inner
   padding: 1em
@@ -113,7 +114,7 @@ $gutter-width : 1em
 
 .primary-nav
 
-  @include clearfix
+  +clearfix
 
   a
     display: block
@@ -130,7 +131,7 @@ $gutter-width : 1em
     text-align: center
 
   > ul
-    @include transition(max-height .50s ease-in-out)
+    +transition(max-height .50s ease-in-out)
     padding: 0
     max-height: 0
     margin: 0
@@ -177,7 +178,7 @@ article.has-meta
     position: absolute
     top: 4em
 
-  @include meta-info
+  +meta-info
 
 footer
   &.main-footer
@@ -210,3 +211,4 @@ footer
 #disqus_thread
   margin-top: 2em
   margin-bottom: 2em
+

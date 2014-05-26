@@ -10,6 +10,13 @@ GIT
       sass (~> 3.1)
       sinatra (~> 1.4)
 
+GIT
+  remote: https://github.com/benprew/pony.git
+  revision: 67a0910beeffea0b1693792f021764012ec4b966
+  specs:
+    pony (1.8)
+      mail (>= 2.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -21,10 +28,15 @@ GEM
       sass (~> 3.1)
     fssm (0.2.10)
     haml (3.1.8)
+    mail (2.5.4)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    mime-types (1.25.1)
     mini_portile (0.5.3)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     plist (3.1.0)
+    polyglot (0.3.4)
     rack (1.5.2)
     rack-codehighlighter (0.5.0)
       nokogiri (>= 1.4.1)
@@ -43,6 +55,9 @@ GEM
     textpow (1.3.1)
       plist (>= 3.0.1)
     tilt (1.4.1)
+    treetop (1.4.15)
+      polyglot
+      polyglot (>= 0.3.1)
     ultraviolet (1.0.1)
       textpow (>= 1.3.0)
 
@@ -52,6 +67,7 @@ PLATFORMS
 DEPENDENCIES
   compass (= 0.12.2)
   nesta!
+  pony!
   rack-codehighlighter
   susy (= 1.0.9)
   ultraviolet

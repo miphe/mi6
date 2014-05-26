@@ -1,3 +1,36 @@
+
+=button-style($width : auto)
+  +border-radius(.2em)
+  // +background-image(linear-gradient(darken($accent_color, 15), darken($accent_color, 5)))
+  background-color: darken($theme-color, 3)
+  color: contrast-color(lighten($accent_color, 20), #000, #fff, 70%)
+  border: 3px solid lighten($theme-color, 70)
+  width: $width
+  padding: .8em
+  font-size: 1.4em
+  font-weight: bold
+  color: darken($theme-color, 30)
+
+  &:hover
+    border-color: darken($theme-color, 30)
+    color: darken($theme-color, 50)
+
+%message-text
+  +border-radius(.2em)
+  padding: .8em 1em .5em 1em
+
+  li
+    list-style: none
+    margin-left: 1em
+    margin-bottom: .3em
+    padding-left: .2em
+
+    &:before
+      font-family: FontAwesome
+      display: inline-block
+      margin-left: -1em
+      width: 1.2em
+
 pre
   padding: 1.5em
   border: 1px solid darken($theme-color, 8)
@@ -35,6 +68,9 @@ hr
   li
     display: inline
     margin-right: 1em
+
+    &.is-last
+      margin-right: 0!important
 
 ul, ol
 
@@ -121,3 +157,36 @@ a.content-example
 .footnote
   @extend .subtle-text
   font-size: .9em
+
+
+// Feedback styles
+.negative-text
+  @extend %message-text
+  background-color: #ffeaea
+  color: #4f0000
+
+  li
+    color: #4f0000
+
+    &:before
+      content: '\f071'
+
+.positive-text
+  @extend %message-text
+  background-color: #c0eec5
+
+  li
+    color: darken(#c0eec5, 50)
+
+    &:before
+      content: '\f087'
+
+.neutral-text
+  @extend %message-text
+  background-color: #ffffcc
+
+  li
+    color: darken(#ffffcc, 60)
+
+    &:before
+      content: '\f06e'
