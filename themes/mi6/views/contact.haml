@@ -8,11 +8,28 @@
         Contact me
 
       %section.feedback-container.height-collapsed
-        - if locals[:errors]
+        - if locals[:errors] && !locals[:errors].empty?
           %ul.negative-text
             - locals[:errors].each do |e|
               %li{ :class => "for-field-#{e[:field]}" }
-                = e[:msg]
+                = e[:message]
+        - elsif locals[:success_message]
+          %p.positive-text
+            = locals[:success_message]
+
+      %section
+        %div.form-section-content
+          %label{ :for => 'name' }
+            Your name
+        %div.form-section-content
+          %input{ :id => 'name', :type => 'text', :name => 'name', :placeholder => 'Your name', :value => locals[:name] }
+
+      %section.website
+        %div.form-section-content
+          %label{ :for => 'website' }
+            Your website
+        %div.form-section-content
+          %input{ :id => 'website', :type => 'text', :name => 'website', :placeholder => 'Your website', :value => 'http://yourwebsite.com' }
 
       %section
         %div.form-section-content

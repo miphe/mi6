@@ -147,8 +147,10 @@
     }
 
     this.init = function() {
-
       var that = this;
+
+      // Apply light form security
+      this.el.find('#name').closest('section').hide();
 
       // Attach listeners
       this.el.on('submit', function(e) {

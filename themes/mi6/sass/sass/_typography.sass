@@ -17,7 +17,7 @@
 
 %message-text
   +border-radius(.2em)
-  padding: .8em 1em .5em 1em
+  padding: .8em 1em
 
   li
     list-style: none
@@ -30,6 +30,9 @@
       display: inline-block
       margin-left: -1em
       width: 1.2em
+
+    &:last-child
+      margin-bottom: 0
 
 pre
   padding: 1.5em
@@ -174,6 +177,7 @@ a.content-example
 .positive-text
   @extend %message-text
   background-color: #c0eec5
+  color: darken(#c0eec5, 50)
 
   li
     color: darken(#c0eec5, 50)
@@ -184,6 +188,7 @@ a.content-example
 .neutral-text
   @extend %message-text
   background-color: #ffffcc
+  color: darken(#ffffcc, 60)
 
   li
     color: darken(#ffffcc, 60)

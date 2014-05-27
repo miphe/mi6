@@ -32,6 +32,10 @@ module Nesta
         Nesta::Config.fetch('mailer', nil) ? true : false
       end
 
+      def author_info
+        Nesta::Config.fetch('author', nil) ? Nesta::Config.fetch('author') : {}
+      end
+
       def social_info
         Nesta::Config.fetch('owner', nil) ? Nesta::Config.fetch('owner') : {}
       end
@@ -202,13 +206,14 @@ module Nesta
     end
 
     post '/contact' do
-
       settings = Nesta::Config.fetch('mailer', nil) ? Nesta::Config.fetch('mailer') : nil
 
-      # Handle validation
-      # Handle XHR return
+      params = Hash.new
+      request.params.map { |o,t| params[o.to_sym] = t }
+      result = validate_all params
+      result[:success_message] = 'Thanks, your message was sent. I\'ll get back to you as soon as possbile.'
 
-      if settings
+      if settings && result[:success]
         Pony.mail({
           :subject     => settings["subject"],
           :body        => request.params["message"],
@@ -226,16 +231,62 @@ module Nesta
         })
       end
 
-      params = {}
-      request.params.each do |o,t|
-        params[o.to_sym] = t
+      haml :contact, :layout => !request.xhr?, :locals => result
+    end
+
+    def validate_all(obj)
+      validated_fields = Array.new
+
+      obj.each do |field, value|
+        validated_fields << validate_field(field, value)
       end
 
-      params[:errors] = [
-        { :field => 'email', :msg => 'Something may be incorrect.' }
-      ]
+      errors = validated_fields.find_all { |item| item[:status] != 'OK' }
 
-      haml :contact, :layout => !request.xhr?, :locals => params
+      return {
+        :success => errors.empty?,
+        :errors => errors
+      }
+    end
+
+    def validate_field(field, value)
+      # Honeypot
+      expected = 'http://yourwebsite.com'
+
+      case field
+      when :reply_to
+        validate_email(field, value)
+      when :message
+        validate_plaintext(field, value)
+      when :name
+        validate_empty(field, value)
+      when :website
+        validate_particular(field, value, expected)
+      end
+    end
+
+    def validate_particular(field, str, expected)
+      not_ok_particular = { :field => field.to_s, :status => 'FAIL', :message => 'Seems you have encountered an obscure problem while submitting your form.' }
+      is_ok_particular = { :field => field.to_s, :status => 'OK' }
+      str === expected ? is_ok_particular : not_ok_particular
+    end
+
+    def validate_empty(field, str)
+      not_ok_empty = { :field => field.to_s, :status => 'FAIL', :message => 'Seems you have encountered an obscure problem while submitting your form.' }
+      is_ok_empty = { :field => field.to_s, :status => 'OK' }
+      str.empty? ? is_ok_empty : not_ok_empty
+    end
+
+    def validate_plaintext(field, str)
+      not_ok_message = { :field => field.to_s, :status => 'FAIL', :message => 'Did you forget to write a message? Don\'t worry it happens to the best of us, why don\'t you try again?' }
+      is_ok_message = { :field => field.to_s, :status => 'OK' }
+      /^.{5,}$/.match(str) ? is_ok_message : not_ok_message
+    end
+
+    def validate_email(field, str)
+      not_ok_email = { :field => field.to_s, :status => 'FAIL', :message => 'There seems to be a problem with your e-mail address, please make sure you entered a valid e-mail.' }
+      is_ok_email = { :field => field.to_s, :status => 'OK' }
+      /^\b[a-zA-Z._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.match(str) ? is_ok_email : not_ok_email
     end
 
   end
