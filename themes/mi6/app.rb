@@ -1,5 +1,3 @@
-# Use the app.rb file to load Ruby code, modify or extend the models, or
-# do whatever else you fancy when the theme is loaded.
 
 module Nesta
   class App
@@ -8,15 +6,10 @@ module Nesta
     use Rack::Static, :urls => ["/mi6"], :root => "themes/mi6/public"
 
     configure do
-      # Configuring sass
       sass_options = Hash.new
 
-      #     Making the generated css easier to read an debug
-      sass_options[:line_numbers] = true        # Other interesting options:
-                                                # :debug_info => true   # if using FireBug
-                                                # :style => :nested     # Can sometimes make the generated css easier to read
-                                                # Options documentation:
-                                                # http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#options
+      # Making the generated css easier to read an debug
+      sass_options[:line_numbers] = true
       set :sass, sass_options
       set :scss, sass_options
     end
