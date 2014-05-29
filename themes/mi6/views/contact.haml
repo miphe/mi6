@@ -7,7 +7,7 @@
       %h3
         Contact me
 
-      %section.feedback-container.height-collapsed
+      %section.feedback-container
         - if locals[:errors] && !locals[:errors].empty?
           %ul.negative-text
             - locals[:errors].each do |e|
