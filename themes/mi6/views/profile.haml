@@ -7,8 +7,9 @@
       .content-container-inner
         %h2
           %span.subtle-text
-            André Drougge
-          | Reach out
+            =author_info["name"]
+          &nbsp;|&nbsp;
+          =social_info["contact_me_text"]
 
         %ul.bare.is-inline
           - social_info["profiles"].each_with_index do |item, i|

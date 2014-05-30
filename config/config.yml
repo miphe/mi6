@@ -92,6 +92,7 @@ mailer:
 owner:
   name: Your name
   gravatar: http://www.gravatar.com/avatar/2cd76b3e1b56af4475c66f5ffb68641a.png?s=400
+  contact_me_text: Get in touch
   profiles:
     Twitter:
       user: Twitter username
