@@ -198,6 +198,10 @@ module Nesta
       ]
     end
 
+    get '/js-tests' do
+      haml :spec_runner, :layout => :test_layout
+    end
+
     post '/contact' do
       settings = Nesta::Config.fetch('mailer', nil) ? Nesta::Config.fetch('mailer') : nil
 
@@ -248,14 +252,18 @@ module Nesta
 
       case field
       when :reply_to
-        validate_email(field, value)
+        res = validate_not_empty(field, value) || validate_email(field, value)
       when :message
-        validate_plaintext(field, value)
+        res = validate_not_empty(field, value) || validate_plaintext(field, value)
       when :name
         validate_empty(field, value)
       when :website
         validate_particular(field, value, expected)
       end
+    end
+
+    def validate_not_empty(field, str)
+      str.empty? ? { :field => field.to_s, :status => 'FAIL', :message => 'Please make sure you dind\'t leave any fields empty.' } : nil
     end
 
     def validate_particular(field, str, expected)

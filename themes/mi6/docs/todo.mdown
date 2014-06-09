@@ -10,3 +10,6 @@
 - [ft]   Add global footer
 - [ft]   Add author_biography to articles
 - [ft]   Handle 404
+
+- [pr]   Build pizza builder app
+- [pr]   Build an aspect ratio calculator with sexy UI?
