@@ -137,8 +137,9 @@
         that.renderMessage(content);
       });
 
-      req.fail(function() {
+      req.fail(function(response) {
         console.warn('Ajax request failed.');
+        console.log(response);
         var $ajaxError = $('<p class="negative-text">I\'m terribly sorry but the message could not be sent, please be patient as I fix the problem.</p>');
         that.renderMessage($ajaxError);
       });
