@@ -198,6 +198,12 @@ module Nesta
       ]
     end
 
+    before '/articles/part-of-x-team' do
+      @related_links = [
+        { :text => '10 Ways to Becoming a Great Remote Developer | by Ryan Chartrand @ X-Team', :href => 'http://x-team.com/2014/05/10-secrets-to-becoming-a-great-remote-developer/', :title => 'Article by Ryan Chartrand about being a great remote developer' },
+      ]
+    end
+
     get '/js-tests' do
       haml :spec_runner, :layout => :test_layout
     end
