@@ -202,11 +202,28 @@ footer
     background:
       color: #fff
 
+    &.darken
+      +opacity(.4)
+      background:
+        color: #000
+
   .logo
     position: absolute
     top: 2em
     left: 2em
     height: 4em
+
+  h2
+    position: absolute
+    bottom: 1.4em
+    left: 1.2em
+    color: #fff
+    font-size: 2em
+
+    &.middle
+      width: 100%
+      left: 0
+      text-align: center
 
 #disqus_thread
   margin-top: 2em
