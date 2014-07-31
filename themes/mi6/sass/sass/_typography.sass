@@ -1,7 +1,7 @@
 
+// Mixins
 =button-style($width : auto)
   +border-radius(.2em)
-  // +background-image(linear-gradient(darken($accent_color, 15), darken($accent_color, 5)))
   background-color: darken($theme-color, 3)
   color: contrast-color(lighten($accent_color, 20), #000, #fff, 70%)
   border: 3px solid lighten($theme-color, 70)
@@ -15,6 +15,7 @@
     border-color: darken($theme-color, 30)
     color: darken($theme-color, 50)
 
+// Placeholders
 %message-text
   +border-radius(.2em)
   padding: .8em 1em
@@ -34,6 +35,10 @@
     &:last-child
       margin-bottom: 0
 
+// General
+.page
+  color: $base_font_color
+
 pre
   padding: 1.5em
   border: 1px solid darken($theme-color, 8)
@@ -46,35 +51,6 @@ hr
   border: 1px solid #ddd
   margin: 2em 0
 
-.subtle-text
-  font-style: italic
-  color: lighten($base_font_color, 20)
-
-.marked-text
-  +border-radius(.2em)
-  padding: .2em .8em
-  background-color: darken($accent_color, 30)
-  color: contrast-color(darken($accent_color, 30), #000, #fff, 70%)
-
-.key
-  +border-radius(.2em)
-  padding: .3em .5em
-  background-color: darken($theme-color, 30)
-  color: contrast-color(darken($theme-color, 30), #000, #fff, 70%)
-
-.is-error
-  @extend .marked-text
-  background-color: lighten(red, 30)
-  color: contrast-color(lighten(red, 30), #000, #fff, 70%)
-
-.is-inline
-  li
-    display: inline
-    margin-right: 1em
-
-    &.is-last
-      margin-right: 0!important
-
 ul, ol
 
   ul, ol
@@ -85,9 +61,6 @@ ul, ol
 
     li
       list-style: none
-
-.page
-  color: $base_font_color
 
 h1
   border-bottom: 1px dotted lighten($base_font_color, 45)
@@ -109,6 +82,43 @@ a
     color: darken($links_font_color, 40)
     border-bottom: 1px dashed lighten($links_font_color, 50)
 
+// End general typography
+
+// Content example
+// This class is great to use for adding images to articles
+// can be used with a div wrapper or an anchor if you want.
+//
+//   Example haml:
+//   .content-example.is-small
+//     %img{ :src => '/attachments/exmple.png' }
+.content-example
+  float: right
+  padding: .8em
+  max-width: 100%
+  background-color: lighten($theme-color, 2)
+  border: 1px solid darken($theme-color, 8)
+  margin: 0 0 1em 0
+
+  img
+    max-width: 100%
+
+  &.is-small
+    max-width: 20%
+
+  @media #{$more-than-phone}
+    width: 50%
+    margin: 0 1em 1em 1em
+
+  @media #{$more-than-tablet}
+    width: 30%
+
+a.content-example
+  &:hover
+    border: 1px dashed lighten($links_font_color, 50)
+
+// End content example
+
+// Lists
 ul.checks
   li
     list-style: none
@@ -135,37 +145,46 @@ ul.code
       margin-left: -1em
       width: 1.2em
 
-.content-example
-  float: right
-  padding: .8em
-  max-width: 100%
-  background-color: lighten($theme-color, 2)
-  border: 1px solid darken($theme-color, 8)
-  margin: 0 0 1em 0
+.is-inline
+  li
+    display: inline
+    margin-right: 1em
 
-  img
-    max-width: 100%
+    &.is-last
+      margin-right: 0!important
 
-  &.is-small
-    max-width: 20%
+// End lists
 
-  @media #{$more-than-phone}
-    width: 50%
-    margin: 0 1em 1em 1em
+// Typography help classes to format your content
+.subtle-text
+  font-style: italic
+  color: lighten($base_font_color, 20)
 
-  @media #{$more-than-tablet}
-    width: 30%
+.marked-text
+  +border-radius(.2em)
+  padding: .2em .8em
+  background-color: darken($accent_color, 30)
+  color: contrast-color(darken($accent_color, 30), #000, #fff, 70%)
 
-a.content-example
-  &:hover
-    border: 1px dashed lighten($links_font_color, 50)
+.key
+  +border-radius(.2em)
+  padding: .3em .5em
+  background-color: darken($theme-color, 30)
+  color: contrast-color(darken($theme-color, 30), #000, #fff, 70%)
+
+.is-error
+  @extend .marked-text
+  background-color: lighten(red, 30)
+  color: contrast-color(lighten(red, 30), #000, #fff, 70%)
 
 .footnote
   @extend .subtle-text
   font-size: .9em
 
+// End help classes
 
-// Feedback styles
+// Feedback messages
+// Error, Success, Info messages
 .negative-text
   @extend %message-text
   background-color: #ffeaea
@@ -198,3 +217,5 @@ a.content-example
 
     &:before
       content: '\f06e'
+
+// End feedback messages
