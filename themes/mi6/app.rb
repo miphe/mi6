@@ -193,6 +193,7 @@ module Nesta
 
     before '/articles/dry-selectors' do
       @related_links = [
+        { :text => 'Great article about understanding Sass lists', :href => 'http://hugogiraudel.com/2013/07/15/understanding-sass-lists/', :title => 'Understanding lists' },
         { :text => 'join-instance_method', :href => 'http://sass-lang.com/documentation/Sass/Script/Functions.html#join-instance_method', :title => 'SASS_REFERENCE' },
         { :text => 'nth-instance_method', :href => 'http://sass-lang.com/documentation/Sass/Script/Functions.html#nth-instance_method', :title => 'SASS_REFERENCE' }
       ]
