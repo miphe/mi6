@@ -19,7 +19,7 @@ author:
 # easy to create or install, and live inside the themes directory. You
 # can also use scripts/theme to install them.
 #
-theme: mi6
+theme: mi6.theme
 
 # If you want to use the Disqus service (http://disqus.com) to display
 # comments on your site, register a Disqus account and then specify your
