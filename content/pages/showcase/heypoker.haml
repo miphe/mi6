@@ -22,4 +22,20 @@ Thumbnail: /attachments/img/heypoker/thumbnail.png
 
   Something that I and the front-end team had some fun with was the contrast switch of this theme - the platform now needed support for bright-on-dark content as well as dark-on-bright content. It was an exciting challenge and gave us room for many graphical performance enhancements.
 
-= haml :related_links, :layout => false, :locals => { :links => @related_links }
+:erb
+  <%
+    rel_links = [
+      {
+        :text => 'The Redbet i-gaming platform',
+        :href => '/showcase/redbet',
+        :title => 'The Redbet i-gaming platform'
+      },
+      {
+        :text => 'Whitebet, theme running on the Redbet platform',
+        :href => '/showcase/whitebet',
+        :title => 'Whitebet.com built on the Redbet platform'
+      }
+    ]
+  %>
+
+= haml :related_links, :layout => false, :locals => { :links => rel_links }

@@ -18,4 +18,20 @@ Thumbnail: /attachments/img/whitebet/thumbnail.png
 
   The Front-End was a great challenge in terms of design, scalability and performance friendly solutions, caching, theme/brand-specific assets&features.
 
-= haml :related_links, :layout => false, :locals => { :links => @related_links }
+:erb
+  <%
+    rel_links = [
+      {
+        :text => 'The Redbet i-gaming platform',
+        :href => '/showcase/redbet',
+        :title => 'The Redbet i-gaming platform'
+      },
+      {
+        :text => 'Heypoker, theme running on the Redbet platform',
+        :href => '/showcase/heypoker',
+        :title => 'Heypoker.com built on the Redbet platform'
+      }
+    ]
+  %>
+
+= haml :related_links, :layout => false, :locals => { :links => rel_links }

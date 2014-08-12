@@ -38,4 +38,20 @@ Thumbnail: /attachments/img/redbet/thumbnail.png
 
   For the duration of leading the team on Malta the platform went through great and fundamental improvements, such as introduction of Sass, new and more organized style authoring approach (SMACSS), rich client-side javascript features & unit tests etc. The time at Redbet was for me a very positive and rewarding experience.
 
-= haml :related_links, :layout => false, :locals => { :links => @related_links }
+:erb
+  <%
+    rel_links = [
+      {
+        :text => 'Whitebet, theme running on the Redbet platform',
+        :href => '/showcase/whitebet',
+        :title => 'Whitebet.com built on the Redbet platform'
+      },
+      {
+        :text => 'Heypoker, theme running on the Redbet platform',
+        :href => '/showcase/heypoker',
+        :title => 'Heypoker.com built on the Redbet platform'
+      }
+    ]
+  %>
+
+= haml :related_links, :layout => false, :locals => { :links => rel_links }

@@ -97,4 +97,25 @@ Summary: Read about a simple way to achieve a bit more beautiful compiled CSS แบ
       :::scss
       \#{$classes} { background-image: url(/bg/game-icons.jpg); }
 
-= haml :related_links, :layout => false, :locals => { :links => @related_links }
+:erb
+  <%
+    rel_links = [
+      {
+        :text => 'Great article about understanding Sass lists',
+        :href => 'http://hugogiraudel.com/2013/07/15/understanding-sass-lists/',
+        :title => 'Understanding lists'
+      },
+      {
+        :text => 'join-instance_method',
+        :href => 'http://sass-lang.com/documentation/Sass/Script/Functions.html#join-instance_method',
+        :title => 'SASS_REFERENCE'
+      },
+      {
+        :text => 'nth-instance_method',
+        :href => 'http://sass-lang.com/documentation/Sass/Script/Functions.html#nth-instance_method',
+        :title => 'SASS_REFERENCE'
+      }
+    ]
+  %>
+
+= haml :related_links, :layout => false, :locals => { :links => rel_links }

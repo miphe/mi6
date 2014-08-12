@@ -160,4 +160,15 @@ Summary: Working remotely is not for everyone, it's different and requires thick
 
   Thanks to the great people and attitude in this environment, I believe in what X-Team is - Superheroes changing the world from anywhere.
 
-= haml :related_links, :layout => false, :locals => { :links => @related_links }
+:erb
+  <%
+    rel_links = [
+      {
+        :text => '10 Ways to Becoming a Great Remote Developer | by Ryan Chartrand @ X-Team',
+        :href => 'http://x-team.com/2014/05/10-secrets-to-becoming-a-great-remote-developer/',
+        :title => 'Article by Ryan Chartrand about being a great remote developer'
+      }
+    ]
+  %>
+
+= haml :related_links, :layout => false, :locals => { :links => rel_links }
