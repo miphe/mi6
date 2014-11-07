@@ -2,3 +2,7 @@
 /config/production.yml
 *.log
 /themes/mi6.theme
+.bundle/*
+config/config_standard.yml
+tmp/*
+vendor/*
