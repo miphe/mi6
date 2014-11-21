@@ -1,0 +1,105 @@
+Title: Nested controllers, ngInclude & $scope
+Link text: Nested controllers, ngInclude & $scope
+Description: Read some of the $scope related gotchas that a novice AngularJS developer may run into.
+Keywords: scope, angularjs, novice, learn
+Categories: categories/javascript, categories/angularjs
+Date: 10 November 2014
+Summary: Read some of the $scope related gotchas that a novice AngularJS developer may run into.
+
+%h1
+  Nested controllers, ngInclude & $scope
+
+:markdown
+
+  Being new to AngularJS there are a couple of gotchas when learning the ropes. I'll be explaining how to avoid targeting `$parent` or `$child` scopes when using `ng-include`, how to debug your code when realizing that `$watch`ers aren't operating on the correct model or scope.
+
+  When working with AngularJS, `$scope` will have a pivotal role in your work and when starting out you might run into roadbumps unless you have a rough idea about how to work with it. I'll aim to explain a couple issues about `$scope` and `ngInclude` that I've run into.
+
+  ## `$scope` ID
+
+  Each controller has it's own scope and each scope has a unique ID, listners/watchers will apply only to the models in the scope where they were applied. For instance a watcher in controller `AppCtrl.js` who listens to `$scope.my_model`, will only listen to that model in that scope, not on `my_model` in a scope with a different ID.
+
+  You can find the scope ID in `$scope.$id`.
+
+  ```
+  console.log($scope.$id);
+  ```
+
+  ## Nested controllers `$scope` ID
+
+  When working with nested controllers, such as the example below..
+
+  _index.html_
+
+      :::html
+      <div ng-controller="AppCtrl">
+        <div ng-controller="LoginCtrl">
+          // Login code..
+        </div>
+        <div ng-controller="TableCtrl">
+          // Table codes...
+        </div>
+      </div>
+
+  .. the `$scope.$id` of `AppCtrl`, will be `001`, but for `LoginCtrl` it may be `002`. If by chance you need to apply a change to a model on the `AppCtrl`'s scope, from the `LoginCtrl`, you can do so by targeting it's parent scope `$scope.$parent`, though if you find yourself targeting different scope than your controllers natural scope, it's probable you should move your functionality to it's appropriate controller instead.
+
+  ## `ngInclude` and `$scope.$id`
+
+  Here's something that threw me off, `ngInclude` creates a new scope! You'll need to keep that in mind when using `ngInclude` to split your templates into partials. Instead of applying a controller to an element in a layout-template, apply the controller to an element in the partial. That way you'll not need to target it's parent's scopes, coupling controllers together by scope. Here's an example.
+
+  _layout.html_
+
+      :::html
+      <div ng-controller="LoginCtrl">
+        <div ng-include="login.html"></div>
+      </div>
+
+  _login.html_
+
+      :::html
+      <form>
+        <form-field ng-field-data="{{login.usr_name}}"></form-field>
+        <form-field ng-field-data="{{login.password}}"></form-field>
+      </form>
+
+  In the case above, you would want to handle the `login` model in the `LoginCtrl` controller, but the scope of the login partial `login.html` will be one step deeper due to ng-include. Instead, define the controller on the same level as the partial (see below).
+
+  _layout.html_
+
+      :::html
+      <div ng-include="login.html"></div>
+
+  _login.html_
+
+      :::html
+      <form ng-controller="LoginCtrl">
+        <form-field ng-field-data="{{login.usr_name}}"></form-field>
+        <form-field ng-field-data="{{login.password}}"></form-field>
+      </form>
+
+  Simply put, it's easy to lose the context of your code if you don't keep good track of which directives creates it's own scope. The more understanding you have about this the better and more testable code you will write.
+
+  To get more in-depth information, check out some of these articles.
+
+:erb
+  <%
+    rel_links = [
+      {
+        :text => 'Avoid scope soup',
+        :href => 'http://www.technofattie.com/2014/03/21/five-guidelines-for-avoiding-scope-soup-in-angular.html',
+        :title => 'Avoid $scope soup, article about managing and understanding scope'
+      },
+      {
+        :text => 'Video about Isolate scope from Egghead',
+        :href => 'https://egghead.io/lessons/angularjs-understanding-isolate-scope',
+        :title => 'Egghead, one of the best sources for AngularJS knowledge'
+      },
+      {
+        :text => 'Official doc about ngInclude',
+        :href => 'https://docs.angularjs.org/api/ng/directive/ngInclude',
+        :title => 'Official AngularJS documentation'
+      }
+    ]
+  %>
+
+= haml :related_links, :layout => false, :locals => { :links => rel_links }
