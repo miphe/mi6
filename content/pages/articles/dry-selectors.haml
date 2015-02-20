@@ -1,17 +1,17 @@
 Title: How to achieve DRY selectors with Sass | Miphe | Andr√© Drougge
-Link text: DRY selectors with Sass
+Link text: Improve your Sass writing, keep your CSS DRY
 Description: A small tip on how to achieve non-repetitive selectors with a DRY approach with Sass
 Keywords: DRY, Sass, scss, css, selector
 Categories: categories/css, categories/sass
 Date: 3 February 2012
-Summary: Read about a simple way to achieve a bit more beautiful compiled CSS ·∫Éithout repeating yourself.
+Summary: This article gives you some insight in how you can write your Sass or SCSS so that the compiled CSS selectors aren't repetitive.
 
 %h1
-  DRY selectors with Sass
+  Improve your Sass writing, keep your CSS DRY
 
 :markdown
 
-  The other day I was refactoring a Sass stylesheet for game icons, they were well over one hundred and even though the Sass code was readable enough, the compiled CSS just didn't cut it - declarations were repeated and structured in a way that just wouldn't happen if you'd write the CSS (without Sass) to begin with. I thought I'd share the core idea behind creating non-repetitive selectors with Sass, resulting in DRY CSS.
+  Sass is a great tool for writing maintainable styles, but just like any code that compiles, you need to consider what the product of your code is. With Sass it is easy to use nifty loops to render huge chunks of CSS, well sometimes that results in very repetitive CSS which is less than optimal in performance.
 
 %p.subtle-text
   The following example can be solved easier by adding a more general class to the markup and assigning styles to that instead, the idea here is to share a Sass technique that may be useful for you in the future, not to solve the presented situation in best possible way
@@ -32,10 +32,10 @@ Summary: Read about a simple way to achieve a bit more beautiful compiled CSS ·∫
       $games: scrabble, tetris, hearts;
 
       @each $game in $games {
-          .game-\#{$game}: background-image: url(/bg/game-icons.jpg);
+        .game-\#{$game}: background-image: url(/bg/game-icons.jpg);
       }
 
-  CSS
+  Repetitive CSS
 
       :::css
       .game-scrabble { background-image: url(/bg/game-icons.jpg); }
@@ -53,7 +53,7 @@ Summary: Read about a simple way to achieve a bit more beautiful compiled CSS ·∫
 
       $classes: ();
       @each $game in $games {
-          $classes: join($classes, unquote(".game-\#{$game} "), comma);
+        $classes: join($classes, unquote(".game-\#{$game} "), comma);
       }
 
       \#{$classes} { background-image: url(/bg/game-icons.jpg); }
@@ -66,6 +66,8 @@ Summary: Read about a simple way to achieve a bit more beautiful compiled CSS ·∫
       .game-hearts { background-image: url(/bg/game-icons.jpg); }
 
   A little more beautiful CSS. This may seem like a small improvement but when you loop through large quantities, this makes a big difference.
+
+
 
   ## Indepth explanation
 
@@ -89,7 +91,7 @@ Summary: Read about a simple way to achieve a bit more beautiful compiled CSS ·∫
 
       :::scss
       @each $game in $games {
-          $classes: join($classes, unquote(".game-\#{$game} "), comma);
+        $classes: join($classes, unquote(".game-\#{$game} "), comma);
       }
 
   Now that we have a good set of comma separated classes, we can simply use the $classes variable as the selector for our rule, such as below.
