@@ -1,0 +1,60 @@
+Title: Pick and Mix - An AngularJS application
+Link text: Pick & Mix with AngularJS
+Description:
+Keywords: angular
+Categories: categories/javascript, categories/angularjs
+Date: 9 March 2015
+Summary: ddd
+
+%h1
+  Pick & Mix, a cool app in AngularJS
+
+.img-container
+  .img-container-inner.darken
+  %h2.logo
+    Start of an Angular app
+  %img.box.full-size{ :src => '/attachments/img/pick-n-mix/picknmix.jpg' }
+  %p.subtle-text.pull-right
+    Image from glitterview.com
+
+:markdown
+  This week I am starting up a new [AngularJS](/categories/angularjs) project which has been on my mind for a couple of weeks now. It will be a fun app to build and will also be fun to introduce Angular to one of my former colleagues from [back in the days](/showcase/redbet).
+
+  ## The idea
+
+  Pick & Mix is a general concept when it comes to acquiring a product containing several parts or choices that defines the product itself. Imagine buying a bag of candy where each piece of candy has a different price and affects the candy bag differently. A bag of chocolates from Marabou is indeed a _candy bag_, but may also be defined as a _Marabou bag_, or a _bag of assorted chocolates_. One part of this application's idea is that the distinction of the product is defined by the included components, as general as needed and as specific as needed.
+
+  A pick & mix bag of candy is usually priced by it's weight. Because of how practical that is in a physical store, that is a well suited system. On the web we don't need to worry about pricing practicality though, each item in the bag may be priced differently without adding complexity to the purchase. When it comes to a bag of candy, this may seem trivial but for other purchases it may not. How about the ingredients of a Pizza, or hardware in a computer system - individual pricing for each component is sometimes imperative.
+
+  As a purchase - or assembly - is being made, the Pick & Mix app will aim to handle the definition, pricing and visual representation of the product and make for a pleasant and fully customized purchase. The app will be a thin front-end layer, leaving the shopping integration and products API open.
+
+  ## Techs
+
+  [> Pick & Mix will be distributed on Github](https://github.com/miphe/pick-n-mix), starting out with the following techs. Feel free to checkout the progress as we go along!
+
+.flag-list
+  :markdown
+    ### <span>AngularJS</span>
+
+  %ul.code
+    %li
+      %a{ :href => 'https://angularjs.org/', :target => '_blank' }
+        AngularJS
+    %li
+      %a{ :href => 'https://angular-ui.github.io/', :target => '_blank' }
+        Angular UI
+
+.flag-list
+  :markdown
+    ### <span>Testing techs</span>
+
+  %ul.code
+    %li
+      %a{ :href => 'http://mochajs.org/', :target => '_blank' }
+        Mocha
+    %li
+      %a{ :href => 'http://sinonjs.org/', :target => '_blank' }
+        SinonJS
+    %li
+      %a{ :href => 'http://chaijs.com/', :target => '_blank' }
+        ChaiJS
