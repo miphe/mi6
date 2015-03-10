@@ -28,33 +28,53 @@ Summary: This week I am starting up a new AngularJS project which has been on my
 
   As a purchase - or assembly - is being made, the Pick & Mix app will aim to handle the definition, pricing and visual representation of the product and make for a pleasant and fully customized purchase. The app will be a thin front-end layer, leaving the shopping integration and products API open.
 
+  ## Process
+
+  The application core is very straight forward and quite small, will especially be a breeze to implement with Angular, so we'll focus on a tidy process with good test coverage. We'll be on Github, you're welcome to contribute anytime.
+
+  ## What about the actual app?
+
+  We'll end up with an app where you define a product by picking and mixing all components as you please. Our example will be a pizza ordering service. Here's the flow.
+
+  - Select type (which dough)
+  - Select components (toppings)
+  - Select attributes (crispy/soft)
+  - Select accessories (sauce/drinks)
+
+  The app will, depending on your selections create a unique name for your product, show you the price and a visual. With the pizza example, showing a visual for each possible combination of a pizza may be trixy but we'll do our best.
+
+  With different data, this app can be used to any product where the concept of Pick & Mix applies.
+
   ## Techs
 
   [> Pick & Mix will be distributed on Github](https://github.com/miphe/pick-n-mix), starting out with the following techs. Feel free to checkout the progress as we go along!
 
-.flag-list
-  :markdown
-    ### <span>AngularJS</span>
+.column-grid.columns-2
+  .column-1
+    .flag-list
+      :markdown
+        ### <span>App<span>
 
-  %ul.code
-    %li
-      %a{ :href => 'https://angularjs.org/', :target => '_blank' }
-        AngularJS
-    %li
-      %a{ :href => 'https://angular-ui.github.io/', :target => '_blank' }
-        Angular UI
+      %ul.code
+        %li
+          %a{ :href => 'https://angularjs.org/', :target => '_blank' }
+            AngularJS
+        %li
+          %a{ :href => 'https://angular-ui.github.io/', :target => '_blank' }
+            Angular UI
 
-.flag-list
-  :markdown
-    ### <span>Testing techs</span>
+  .column-2
+    .flag-list
+      :markdown
+        ### <span>Tests<span>
 
-  %ul.code
-    %li
-      %a{ :href => 'http://mochajs.org/', :target => '_blank' }
-        Mocha
-    %li
-      %a{ :href => 'http://sinonjs.org/', :target => '_blank' }
-        SinonJS
-    %li
-      %a{ :href => 'http://chaijs.com/', :target => '_blank' }
-        ChaiJS
+      %ul.code
+        %li
+          %a{ :href => 'http://mochajs.org/', :target => '_blank' }
+            Mocha
+        %li
+          %a{ :href => 'http://sinonjs.org/', :target => '_blank' }
+            SinonJS
+        %li
+          %a{ :href => 'http://chaijs.com/', :target => '_blank' }
+            ChaiJS
