@@ -6,7 +6,7 @@ Template: front
 Show meta: false
 Flags: primary
 
-- bg_alts = ['bg-2', 'bg-4', 'bg-5']
+- bg_alts = ['bg-1', 'bg-2', 'bg-3']
 - bg_class = bg_alts.sample
 
 %section{ :class => "hero #{bg_class}" }
@@ -83,24 +83,3 @@ Flags: primary
     %>
 
   = haml :"partials/xp_graph", :layout => false, :locals => { :xp_data => xp_data }
-
-%section.column-grid.columns-2.is-hidden
-  .column-1
-    %section{ :class => 'latest-articles show-box box' }
-      %h2
-        Latest articles
-
-      %ul.bare
-        - find_articles_by_path('articles', 3).each do |article|
-          %li
-            %a{ :href => article.abspath }
-              = article.link_text
-
-  .column-2
-    = haml :testimonials, :layout => false
-
-%section.is-hidden
-  %h2
-    Selected work..
-
-  - showcase_in_grid(Nesta::Page.find_by_path('/categories/showcase').articles)
