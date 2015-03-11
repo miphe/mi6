@@ -1,0 +1,59 @@
+Title: Cleaning Alienware M17x internally | André Drougge | miphe
+Link text: Laptop cleaning adventure
+Description: A short summary and tips on cleaning your lap top internally.
+Keywords: laptop, cleaning, how to, tips
+Categories: categories/tip
+Date: 11 March 2015
+Summary: A short summary and tips on cleaning your lap top internally.
+
+%h1
+  Laptop cleaning adventure
+
+%a.content-example.viewable-image{ :href => '/attachments/img/general/cleaning_computer.very_dusty.jpg' }
+  %img{ :src => '/attachments/img/general/cleaning_computer.very_dusty.jpg', :alt => 'Dust on processor heat sink', :title => 'View image of a dusty heat sink' }
+  %span.subtle-text.pull-centre
+    Very dusty heat sink
+
+:markdown
+  Recently I've seen my CPU temperatures rising for no particular reason and the other day I started to experience crashes when pushing either CPU or GPU. Since I bought my laptop about 2 years ago and haven't cleaned it internally since then, I figured it was time now, or face expensive hardware issues later.
+
+  To measure my CPU temperatures on Ubuntu, I use [Hardware Sensors Indicator](https://launchpad.net/indicator-sensors) which were constantly showing degrees like **80°C - 110°C**. If you're seeing the same thing, there is a problem - it's not OK. Here are a few videos about cleaning your laptop internally, or read on and get my two cents.
+
+  - [Clean fans with compressed air](https://www.youtube.com/watch?v=13gFbvLIjko)
+  - [Apply thermal paste properly](https://www.youtube.com/watch?v=-hNgFNH7zhQ)
+  - [Random vid of someone cleaning an Alienware M17](https://www.youtube.com/watch?v=rKTorPmg694)
+  - [Comprehensive laptop disassembly](https://www.youtube.com/watch?v=w1H9B-yUKhc)
+
+  ## Tools
+
+  When you have CPU heating issues, the [thermal paste](https://en.wikipedia.org/wiki/Thermal_grease) is probably pivotal in solving those issues. Since it's really cheap and easy to get (any computer/tech store) it's a good idea just to [reapply](https://www.youtube.com/watch?v=-hNgFNH7zhQ) ever so often (every 8-12 month or so).
+
+%a.content-example.viewable-image{ :href => '/attachments/img/general/cleaning_computer.thermal_paste.jpg' }
+  %img{ :src => '/attachments/img/general/cleaning_computer.thermal_paste.jpg', :alt => 'Thermal paste image', :title => 'View image of thermal paste applied' }
+
+:markdown
+  Something that wasn't so easy to find for me was [isopropyl alcohol](https://en.wikipedia.org/wiki/Isopropyl_alcohol). Supposedly you should be able to get it from any pharmacy but in my current country of residence they only have alcohol up to 70%. Isopropyl should be ~99%. I looked through a bunch of IT shops, hardware stores and even car mechanics shop for this stuff. Eventually I found it in an IT store. It's basically the only thing that you should use when you clean your processor and get the old thermal paste off from it. Use this alcohol because it evaporates really quickly and leaves little or no residue on your processor. Also, don't use paper or cotton to clean the processor - use a microfibre cloth, personally I used a cloth for cleaning my ol' glasses.
+
+  Using paper or cotton, leaves residue on the processor which generates heat and doesn't let the chill from the processors heatsink enter the processor as well.
+
+  If you want to get the cleaning out of the way as fast as possible - make sure you have what you need first.
+
+.img-container.viewable-image{ :href => '/attachments/img/general/cleaning_computer.arrows.jpg' }
+  %img.box.full-size{:src => '/attachments/img/general/cleaning_computer.arrows.jpg', :alt => 'Tools for cleaning a PC', :title => 'View image of all stuff you may need for cleaning a PC' }
+  %p.subtle-text.pull-right
+    The plastic bottle with a red cap -> Isopropyl Alcohol
+
+:markdown
+  ## Result
+
+  - Clean CPU heat sink
+  - Clean GPU heat sink
+  - General dust-busting
+  - Clean CPU, remove old termal paste
+  - Apply new thermal paste to CPU
+  - Clean CPU and GPU fans
+  - Clean laptop cooler
+
+  With all of this done, the temperature was reduced with 40-50°C leaving it at a steady **40°C - 50°C**.
+
+  Thanks for checking in, if you got any questions, let me know in the comments.
