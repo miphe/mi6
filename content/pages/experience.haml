@@ -10,23 +10,124 @@ Flags: primary
 
 = haml :public_profile, :layout => false, :locals => { :title => false, :bare => true, :inline => true }
 
+:erb
+  <%
+
+    # heading => Heading of article
+    # details => Short summary
+    # extra   => One-line meta info
+    # length  => Determines the length of a bar. 4 is a full year.
+    # stop    => Determines in which quarter the bar should stop (top).
+
+    timeline = [
+      {
+        :year => '2015',
+        :articles => [
+          {
+            :heading => 'AngularJS developer, Aviso Novate',
+            :details => 'Rich single-page application development with AngularJS - big focus on stability and scalability.',
+            :extra => 'Remote, Ireland | 2014 - Present',
+            :length => 3,
+            :stop => 3
+          }
+        ]
+      },
+      {
+        :year => '2014',
+        :articles => [
+          {
+            :heading => 'Web Application Developer, X-Team',
+            :details => 'X-Team develops and maintains web projects built on different platforms with varying technologies.<br /><br />
+
+            My main focus as a developer for X-Team was feature development, cross device/browser bench marking, responsive behavior and UX refinement.',
+            :extra => 'Remote, USA | 2013 - 2015',
+            :length => 6,
+            :stop => 0
+          }
+        ]
+      },
+      {
+        :year => '2013',
+        :articles => [
+          {
+            :heading => 'Chief Web Architect, Redbet Gaming',
+            :details => 'Some information here.',
+            :extra => 'Front-end team lead. Concept design and front-end architecture/development. Responsibilities also included quality assurance, team methodology, graphical profile, interaction design and UX design.',
+            :length => 12,
+            :stop => 2
+          }
+        ]
+      },
+      {
+        :year => '2012',
+        :articles => []
+      },
+      {
+        :year => '2011',
+        :articles => []
+      },
+      {
+        :year => '2010',
+        :articles => [
+          {
+            :heading => 'Web Developer | Designer, Redbet Technology',
+            :details => 'As the graphics cornerstone of the team (eight developers) I handled the Graphics/UI design and marketing materials. I was involved in templating, JavaScript development, performance enhancement and style implementations.',
+            :extra => 'Stockholm, Sweden | 2008 - 2010',
+            :length => 8,
+            :stop => 2
+          }
+        ]
+      },
+      {
+        :year => '2009',
+        :articles => []
+      },
+      {
+        :year => '2008',
+        :articles => [
+          { :heading => 'Education | Interactions Design',
+            :details => 'Nakademin\'s Interactions Design program consists in four primary sections - In-depth Software education, Design & Marketing strategics, Modern Web Technology,  and Business preparation/acclimatization (LIA, internship).<br/><br/>
+
+            Each cornerstone being divided into sub-sections were substantial and fruitful but the section of Modern Web Technology was well emphasized. This is where subjects like UX, UI Design, Study of MMI and the Study of Interaction Design were handled, apart from the regular mandatory web technology studies.<br/><br/>
+
+            Each year was finished with a 6-10 week internship as to prepare and align the student to the current market.',
+            :extra => 'Stockholm, Sweden | 2006 - 2008',
+            :length => 8,
+            :stop => 2
+          }
+        ]
+      },
+      {
+        :year => '2007',
+        :articles => [
+          {
+            :heading => 'Internship Web Developer | Silvia Media, Atna',
+            :details => 'My work with Silvia Media was mostly on web development with Drupal and Texpattern, but also included some web design and prototype development.',
+            :extra => 'Stockholm, Sweden | 2008',
+            :length => 1,
+            :stop => 0
+          },
+          {
+            :heading => 'Internship Production Designer, Final Artist | News Machine',
+            :details => 'NewsMachine is an online business intelligence tool where I worked mostly with the graphical profile and UI benchmarking.',
+            :extra => 'Stockholm, Sweden | 2007',
+            :length => 1,
+            :stop => 3
+          }
+        ]
+      },
+      {
+        :year => '2006',
+        :articles => []
+      }
+    ]
+  %>
+
+= haml :"partials/timeline", :layout => false, :locals => { :timeline => timeline }
+
 :markdown
-  ## 2015 - Present
-  - <span class="marked-text">Angular Developer</span> <span class ="subtle-text">Aviso (Remote)</span> _<a title="Aviso Novate, official web site" href="http://www.aviso.io/" target="_blank">Read more..</a>_
 
-  ## 2013 - 2015
-  - Web Application developer <span class ="subtle-text">X-Team (Remote)</span> _[Read more..](/showcase/x-team)_
-
-  ## 2008 - 2013
-  - [Chief Web Architect](/showcase/redbet#my-role) <span class="subtle-text">Redbet Gaming Ltd (Malta)</span> _[Read more..](/showcase/redbet#my-role)_
-  - [Web Developer, Designer](/showcase/redbet) <span class="subtle-text">Redbet Technology (sthlm)</span> _[Read more..](/showcase/redbet)_
-
-  ## 2006 - 2008
-  - Internship: Web Developer <span class="subtle-text">Silvia Media, Atna (sthlm)</span>
-  - Internship: Production Designer, Final Artist <span class="subtle-text">News Machine (sthlm)</span>
-  - Education: Interactions Design <span class="subtle-text">Nackademin Kvalificerad Yrkesutbildning (sthlm)</span>
-
-  ## Until 2006
+  ## Up until 2006
   - Education: Digital Grafik <span class="subtle-text">Centrumvux (sthlm)</span>
   - Education: Information &amp; Layout <span class="subtle-text">Centrumvux (sthlm)</span>
   - Education: Programhantering <span class="subtle-text">Centrumvux (sthlm)</span>
