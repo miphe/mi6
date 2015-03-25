@@ -1,4 +1,5 @@
 Title: Experience | Miphe | André Drougge
+Link text: Experience
 Description: Curriculum Vitae
 Keywords: CV, experience
 Summary: CV
@@ -7,8 +8,6 @@ Flags: primary
 
 %h1
   Experience
-
-= haml :public_profile, :layout => false, :locals => { :title => false, :bare => true, :inline => true }
 
 :erb
   <%
@@ -20,6 +19,10 @@ Flags: primary
     # stop    => Determines in which quarter the bar should stop (top).
 
     timeline = [
+      {
+        :year => '2016',
+        :articles => []
+      },
       {
         :year => '2015',
         :articles => [
