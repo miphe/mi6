@@ -30,8 +30,8 @@ Flags: primary
             :heading => 'AngularJS developer, Aviso Novate',
             :details => 'Rich single-page application development with AngularJS - big focus on stability and scalability.',
             :extra => 'Remote, Ireland | 2014 - Present',
-            :length => 3,
-            :stop => 3
+            :length => 4,
+            :stop => 2
           }
         ]
       },
@@ -125,15 +125,20 @@ Flags: primary
       }
     ]
   %>
-
 = haml :"partials/timeline", :layout => false, :locals => { :timeline => timeline }
 
-:markdown
+%hr
 
-  ## Up until 2006
-  - Education: Digital Grafik <span class="subtle-text">Centrumvux (sthlm)</span>
-  - Education: Information &amp; Layout <span class="subtle-text">Centrumvux (sthlm)</span>
-  - Education: Programhantering <span class="subtle-text">Centrumvux (sthlm)</span>
+.grid-container
+  .col-6
+    :markdown
 
-  ## Unofficial
-  - Education: Digital Painting 101 <span class="subtle-text">The Lamp Post Guild (Remote, 2013)</span>
+      ## Up until 2006
+      - Education: Digital Grafik <span class="subtle-text">Centrumvux (sthlm)</span>
+      - Education: Information &amp; Layout <span class="subtle-text">Centrumvux (sthlm)</span>
+      - Education: Programhantering <span class="subtle-text">Centrumvux (sthlm)</span>
+  .col-6-o
+    :markdown
+
+      ## Unofficial
+      - Education: Digital Painting 101 <span class="subtle-text">The Lamp Post Guild (Remote, 2013)</span>
