@@ -19,5 +19,4 @@ categories
   categories/software
   categories/x-team
 experience
-bookshelf
 about-me
