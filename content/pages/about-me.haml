@@ -38,7 +38,7 @@ Flags: primary
       By 2014 my interest moved towards Javascript more and more. At Aviso, an Irish company working with payment technology, I really got to delve deep into the rich client-side application development, with AngularJS, ClojureScript, ReactJS and Reagent.
 
     %p
-      With Aviso moving aways from AngularJS, I got introduced to MyTalengi and Keeper Solutions where I would really get to work with my all-time favorite - BackboneJS.
+      With Aviso moving aways from AngularJS, I got introduced to MyTalengi and Keeper Solutions where I would really get to work with one of my favorites - BackboneJS.
 
   / .col-4-o
   /   .box.show-box
@@ -68,50 +68,50 @@ Flags: primary
         'Passion'
       ],
       :data => [
-          { :id => 'backbone',
-            :label => 'Backbone.js',
-            :img => 'attachments/img/logos/backbone.png',
-            :bar_1 => 80,
-            :bar_2 => 70,
-            :bar_3 => 100,
-            :content => 'Lightweight and powerful. The amount of structure and functionality that Backbone.js provides is just in my taste, combined with one or two additions like Marionette we get a full fledged MV* framework yet enough room for your own coding style and ideas.'
-          },
+        { :id => 'backbone',
+          :label => 'Backbone.js',
+          :img => 'attachments/img/logos/backbone.png',
+          :bar_1 => 90,
+          :bar_2 => 80,
+          :bar_3 => 80,
+          :content => 'Lightweight and powerful. The fundamentals and ideas that BackboneJS advocates is just in my taste, combined with MarionetteJS it becomes a powerful, solid, event-driven MVC yet with enough room for your own coding style and ideas.'
+        },
 
-          { :id => 'angular',
-            :label => 'AngularJS',
-            :img => 'attachments/img/logos/angular.png',
-            :bar_1 => 60,
-            :bar_2 => 50,
-            :bar_3 => 70,
-            :content  => "There are few frameworks I like working with as much as I do with AngularJS. The MV* structure, straightforward testability and the great benefits of a very declarative view makes it a powerful tool."
-          },
+        { :id => 'vue',
+          :label => 'Vue.js',
+          :img => 'attachments/img/logos/vue.png',
+          :bar_1 => 70,
+          :bar_2 => 40,
+          :bar_3 => 90,
+          :content  => "VueJS is a pleasure to work with. Need 2-way data binding and a very performant reactive UI - my choice would be Vue. In the coming year, Vue will be the framework I'll be exploring mostly."
+        },
 
-          { :id => 'jquery',
-            :label => 'jQuery',
-            :img => 'attachments/img/logos/jquery.png',
-            :bar_1 => 90,
-            :bar_2 => 100,
-            :bar_3 => 50,
-            :content  => 'As for most Front-End developers, jQuery has been a part of my life for quite some time now, it\'s for me what the utility belt is for Batman. The super-power isn\'t about the belt, but it makes a lot of stuff much easier.'
-          },
+        { :id => 'angular',
+          :label => 'AngularJS',
+          :img => 'attachments/img/logos/angular.png',
+          :bar_1 => 60,
+          :bar_2 => 50,
+          :bar_3 => 70,
+          :content  => "Angular has proven to be a great choice as a rigorous, comprehensive framework. The MV* structure, straightforward testability and the great benefits of a very declarative view makes it a powerful tool."
+        },
 
-          { :id => 'sass',
-            :label => 'Sass',
-            :img => 'attachments/img/logos/sass.png',
-            :bar_1 => 100,
-            :bar_2 => 90,
-            :bar_3 => 70,
-            :content  => 'For me Sass is more than an aid to strucure, re-use and calculate styles - it enables me to be more creative in the way I write my code. I get to adhere to a programmatical mindset as opposed to just writing declarations, which makes writing styles really enjoyable, especially with tools like Compass, Susy or Bourbon.'
-          },
+        { :id => 'jquery',
+          :label => 'jQuery',
+          :img => 'attachments/img/logos/jquery.png',
+          :bar_1 => 80,
+          :bar_2 => 90,
+          :bar_3 => 60,
+          :content  => "As for most Front-End developers, jQuery has been a part of my life for quite some time now, it's for me what the utility belt is for Batman. The super-power isn't about the belt, but it makes a lot of stuff much easier."
+        },
 
-          { :id => 'responsive',:label => 'Responsive',
-            :img => 'attachments/img/logos/responsive.png',
-            :bar_1 => 90,
-            :bar_2 => 80,
-            :bar_3 => 70,
-            :content  => 'These days, responsiveness for a web-site goes without saying, there is more to building responsive web applications than that though. If breakpoints doesn\'t give the right experience or feel intuitive enough - then there a lot of room for improvements. Truly responsive applications that feels right from phone to desktop, that just gives a really professional impression.'
-          }
-        ]
+        { :id => 'sass',
+          :label => 'Sass',
+          :img => 'attachments/img/logos/sass.png',
+          :bar_1 => 100,:bar_2 => 90,
+          :bar_3 => 70,
+          :content  => 'For me Sass is more than an aid to strucure, re-use and calculate styles - it enables me to be more creative in the way I write my code. I get to adhere to a programmatical mindset as opposed to just writing declarations, which makes writing styles really enjoyable, especially with tools like Compass, Susy or Bourbon.'
+        }
+      ]
     }
   %>
 
@@ -122,7 +122,7 @@ Flags: primary
 
   I really enjoy the constant evolution of the web industry and the need to always stay in sync and up to date. I love learning new things and to deepen my knowledge in my techs of choice.
 
-  When I'm not doing that, I enjoy longboarding, digital painting, archery and the occational try at the guitar.
+  When I'm not doing that, I enjoy longboarding, archery, digital painting and the occational try at the guitar.
 
   ## Skills/Technologies
 
@@ -156,6 +156,9 @@ Flags: primary
         ### <span>JavaScript</span> libs and such
 
       %ul.code
+        %li
+          %a{ :href => 'https://vuejs.org/', :target => '_blank' }
+            Vue
         %li
           %a{ :href => 'https://angularjs.org/', :target => '_blank' }
             Angular
@@ -269,6 +272,9 @@ Flags: primary
         ### <span>Other</span>
 
       %ul.code
+        %li
+          %a{ :href => 'http://coffeescript.org/', :target => '_blank' }
+            CoffeeScript
         %li
           %a{ :href => 'http://clojure.org/', :target => '_blank' }
             Clojure & ClojureScript
